@@ -12,8 +12,6 @@ class CustomTextField extends StatelessWidget {
         cursorColor: PKColor,
         decoration: InputDecoration(
           hintText: hint,
-        
-          
           hintStyle: TextStyle(color: PKColor),
           border: buildborder(),
           enabledBorder: buildborder(),
