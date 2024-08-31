@@ -10,7 +10,8 @@ class NotesView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
+          showModalBottomSheet(//don'nt have build method so we should re run app again to show changes 
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               context: context,
               builder: (context) {
                 return const AddNoteBottomSheet();
