@@ -1,7 +1,16 @@
-class NoteModel {
+import 'package:hive/hive.dart';
+part 'notemodel.g.dart';// عن طريق الكومند flutter packages pub run build_runner buildاسم الملف الى هيتعمله جينيريت الادابتر عن طريق البيلد راننر 
+
+@HiveType(typeId: 0)//uniqe of any model in app
+class NoteModel extends HiveObject{
+  @HiveField(0)//uniqe in class only
   final String title;
+  @HiveField(1)
   final String subtitle;
+    @HiveField(2)
+
   final String date;
+    @HiveField(3)
   final int color;
   NoteModel(
       {required this.color,
