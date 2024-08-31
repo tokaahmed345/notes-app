@@ -24,3 +24,4 @@ class NotesApp extends StatelessWidget {
     );
   }
 }
+//hive use in  app with dart or flutter  to use by flutter we use extention flutter hive and some of tools generate  code as build runner to use it should use hive generator to generate code
