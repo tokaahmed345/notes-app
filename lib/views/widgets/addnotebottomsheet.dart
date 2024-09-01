@@ -44,3 +44,4 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
     );
   }
 }
+////create blocovserver to check is state is ok or not
