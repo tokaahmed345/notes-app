@@ -23,25 +23,24 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
     //any change of border of container not effect on bottom sheet so you should change borderfrom shape in show bottom sheet
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: SingleChildScrollView(
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteFailure) {
-              print("error:${state.errormessage}");
-            }
-
-            if (state is AddNoteSucecc) {
-              Navigator.pop(context);
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
-                child: AddNoteForm());
-          },
-        ),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFailure) {
+            print("error:${state.errormessage}");
+          }
+      
+          if (state is AddNoteSucecc) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              child: SingleChildScrollView(child: AddNoteForm()));
+        },
       ),
     );
   }
 }
 ////create blocovserver to check is state is ok or not
+//single should be under of modalhud

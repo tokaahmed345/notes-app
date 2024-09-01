@@ -14,9 +14,10 @@ AddNoteCubit(): super(AddNoteInitial());
     try {
       var boxnote = Hive.box<NoteModel>(
           knotesbox); //store data in box determine type of data which write notemodel
-      emit(AddNoteSucecc());
 
       await boxnote.add(note);
+            emit(AddNoteSucecc());
+
     } catch (e) {
       emit(AddNoteFailure(e.toString()));
     }

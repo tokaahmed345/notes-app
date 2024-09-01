@@ -11,7 +11,7 @@ import 'package:noteapp/views/notesview.dart';
 void main() async {
   Bloc.observer = SimpleBlocObserve();
   await Hive.initFlutter();
-  await Hive.openBox(knotesbox); //store data in box
+  await Hive.openBox<NoteModel>(knotesbox); //store data in box
   Hive.registerAdapter(
       NoteModelAdapter()); //  كده بقول الهايف انها بتتعامل مع نوت مودا  بعد انشاء الادابتر
   runApp(const NotesApp());
