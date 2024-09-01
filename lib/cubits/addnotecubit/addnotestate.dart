@@ -1,6 +1,12 @@
-class AddNoteState{}
-class AddNoteLoading extends AddNoteState{}
-class AddNoteSucecc extends AddNoteState{}
-class AddNoteFailure extends AddNoteState{}
+class AddNoteState {}
 
-class AddNoteInitial extends AddNoteState{}
+class AddNoteLoading extends AddNoteState {}
+
+class AddNoteSucecc extends AddNoteState {}
+
+class AddNoteFailure extends AddNoteState {
+  String errormessage;
+  AddNoteFailure(this.errormessage);
+}
+
+class AddNoteInitial extends AddNoteState {}
