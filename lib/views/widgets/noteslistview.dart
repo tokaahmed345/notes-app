@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noteapp/cubits/readnotescubit/readnotecubit.dart';
+import 'package:noteapp/cubits/readnotescubit/readnotesstate.dart';
+import 'package:noteapp/models/notemodel.dart';
 import 'package:noteapp/views/widgets/customnoteitem.dart';
 
 class NotesListView extends StatelessWidget {
@@ -17,17 +21,25 @@ class NotesListView extends StatelessWidget {
   // ];
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-     //   itemCount: data.length,
-        itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: NoteItem()//)color: data[index],),
-        );
-      }),
-    );
+    return BlocBuilder<ReadNotesCubit, ReadNotesStates>(
+        builder: (context, state) {
+   List<NoteModel>notes=   BlocProvider.of<ReadNotesCubit>(context).noteslist??[];
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: ListView.builder(
+          //  itemCount: state is SuccesReadNotes?state.listnot.length:0,
+          padding: EdgeInsets.zero,
+          //   itemCount: data.length,
+         itemCount: notes.length,
+         
+          itemBuilder: (context, index) {
+            return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: NoteItem() //)color: data[index],),
+                );
+          },
+        ),
+      );
+    });
   }
 }

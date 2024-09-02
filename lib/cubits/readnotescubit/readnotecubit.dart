@@ -4,16 +4,17 @@ import 'package:noteapp/constant.dart';
 import 'package:noteapp/cubits/readnotescubit/readnotesstate.dart';
 import 'package:noteapp/models/notemodel.dart';
 
-class ReadNotesCubit extends Cubit {
+class ReadNotesCubit extends Cubit<ReadNotesStates> {
   ReadNotesCubit() : super(InitialState());
-
+  List<NoteModel>? noteslist;
   fetchnotes() {
-    try {
-      var notes = Hive.box<NoteModel>(knotesbox);
-     List<NoteModel>noteslist= notes.values.toList();
-      emit(SuccesReadNotes(noteslist));
-    } on Exception catch (e) {
-      emit(FailuireReadNotes(e.toString()));
-    }
+    // try {
+    var notes = Hive.box<NoteModel>(knotesbox);
+noteslist = notes.values.toList();
+    //emit(SuccesReadNotes(noteslist));
+    // } on Exception catch (e) {
+    //   // emit(FailuireReadNotes(e.toString()));
+    // }
   }
 }
+//remove try & catch so that data never fetch from internet so there is no failure
