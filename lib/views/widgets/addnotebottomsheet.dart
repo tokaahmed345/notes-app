@@ -23,25 +23,25 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
     //any change of border of container not effect on bottom sheet so you should change borderfrom shape in show bottom sheet
     return BlocProvider(
       create: (context) => AddNoteCubit(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteFailure) {
-              print("error:${state.errormessage}");
-            }
-
-            if (state is AddNoteSucecc) {
-              Navigator.pop(context);
-            }
-          },
-          
-          builder: (context, state) {
-            return AbsorbPointer(
-              absorbing: state is AddNoteLoading?true:false,
-              child: SingleChildScrollView(child: AddNoteForm()));
-          },
-        ),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFailure) {
+            print("error:${state.errormessage}");
+          }
+      
+          if (state is AddNoteSucecc) {
+            Navigator.pop(context);
+          }
+        },
+        
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading?true:false,
+            child: Padding(
+              padding:  EdgeInsets.only(left:16,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: SingleChildScrollView(child: AddNoteForm()),
+            ));
+        },
       ),
     );
   }
