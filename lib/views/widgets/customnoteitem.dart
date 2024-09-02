@@ -5,7 +5,7 @@ import 'package:noteapp/models/notemodel.dart';
 import 'package:noteapp/views/editnoteview.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key,required this.note}); //required this.color});
+  const NoteItem({super.key, required this.note}); //required this.color});
   //final  Color color;
   final NoteModel note;
   @override
@@ -34,13 +34,15 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16.0, bottom: 16),
                 child: Text(
-           note.subtitle,
+                  note.subtitle,
                   style: TextStyle(
                       color: Colors.black.withOpacity(.5), fontSize: 18),
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                   icon: Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,
@@ -50,7 +52,7 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24.0),
               child: Text(
-            note.date,
+                note.date,
                 style: TextStyle(
                     color: Colors.black.withOpacity(.4), fontSize: 16),
               ),
