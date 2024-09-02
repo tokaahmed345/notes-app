@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:noteapp/cubits/addnotecubit/addnotecubit.dart';
 import 'package:noteapp/cubits/addnotecubit/addnotestate.dart';
+import 'package:noteapp/cubits/readnotescubit/readnotecubit.dart';
 import 'package:noteapp/views/widgets/addnoteform.dart';
 import 'package:noteapp/views/widgets/custom-textfield.dart';
 import 'package:noteapp/views/widgets/customappbar.dart';
@@ -31,6 +32,8 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
       
           if (state is AddNoteSucecc) {
             Navigator.pop(context);
+         BlocProvider.of<ReadNotesCubit>(context).fetchnotes();
+
           }
         },
         

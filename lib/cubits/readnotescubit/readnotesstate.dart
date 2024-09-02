@@ -4,6 +4,8 @@ class ReadNotesStates {}
 
 class InitialState extends ReadNotesStates {}
 
+
+class SuccessState extends ReadNotesStates{}
 // class SuccesReadNotes extends ReadNotesStates {
 //   List<NoteModel> listnot;
 
