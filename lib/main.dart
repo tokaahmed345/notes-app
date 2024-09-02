@@ -11,9 +11,9 @@ import 'package:noteapp/views/notesview.dart';
 void main() async {
   Bloc.observer = SimpleBlocObserve();
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(knotesbox); //store data in box
-  Hive.registerAdapter(
-      NoteModelAdapter()); //  كده بقول الهايف انها بتتعامل مع نوت مودا  بعد انشاء الادابتر
+  //  كده بقول الهايف انها بتتعامل مع نوت مودا  بعد انشاء الادابتر
   runApp(const NotesApp());
 }
 
@@ -22,24 +22,24 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-            create: (context) =>
-                AddNoteCubit()), //allowed to all screens in app
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: 'Poppins',
-          useMaterial3: false,
-        ),
-        routes: {
-          NotesView.id: (context) => NotesView(),
-        },
-        initialRoute: NotesView.id,
+    // return MultiBlocProvider(//cubit still open till app open so we should use it in specific area that use cubit in it
+    //   providers: [
+    //     BlocProvider(
+    //         create: (context) =>
+    //             AddNoteCubit()), //allowed to all screens in app
+    //   ],
+    //   child: MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: 'Poppins',
+        useMaterial3: false,
       ),
+      routes: {
+        NotesView.id: (context) => NotesView(),
+      },
+      initialRoute: NotesView.id,
     );
   }
 }
