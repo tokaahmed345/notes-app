@@ -4,9 +4,9 @@ part 'notemodel.g.dart';// عن طريق الكومند flutter packages pub run
 @HiveType(typeId: 0)//uniqe of any model in app
 class NoteModel extends HiveObject{
   @HiveField(0)//uniqe in class only
-  final String title;
+   String title;
   @HiveField(1)
-  final String subtitle;
+   String subtitle;
     @HiveField(2)
 
   final String date;
