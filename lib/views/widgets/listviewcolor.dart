@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noteapp/cubits/addnotecubit/addnotecubit.dart';
 
 class ItemColor extends StatelessWidget {
-  const ItemColor({super.key, required this.isactive,required this.color});
+  const ItemColor({super.key, required this.isactive, required this.color});
 
   final bool isactive;
   final Color color;
@@ -32,7 +34,7 @@ class ListViewColor extends StatefulWidget {
 
 class _ListViewColorState extends State<ListViewColor> {
   int curentindex = 0;
-  List<Color> pallet = const[
+  List<Color> pallet = const [
     Color(0xffFE5F55),
     Color(0xffF0B67F),
     Color(0xffD6D1B1),
@@ -52,6 +54,8 @@ class _ListViewColorState extends State<ListViewColor> {
               child: GestureDetector(
                   onTap: () {
                     curentindex = index;
+                    BlocProvider.of<AddNoteCubit>(context).color =
+                        pallet[index];
                     setState(() {});
                   },
                   child: ItemColor(

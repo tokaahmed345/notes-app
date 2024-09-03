@@ -7,8 +7,12 @@ import 'package:noteapp/models/notemodel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
-AddNoteCubit(): super(AddNoteInitial());
+  AddNoteCubit() : super(AddNoteInitial()); //handel any change when add
+  Color color = Color(0xffFE5F55);
+
   addnote(NoteModel note) async {
+    note.color = color.value;
+
     //الى هخزنه فلى الهايف
     emit(AddNoteLoading());
     try {
@@ -16,8 +20,7 @@ AddNoteCubit(): super(AddNoteInitial());
           knotesbox); //store data in box determine type of data which write notemodel
 
       await boxnote.add(note);
-            emit(AddNoteSucecc());
-
+      emit(AddNoteSucecc());
     } catch (e) {
       emit(AddNoteFailure(e.toString()));
     }
