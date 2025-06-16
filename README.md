@@ -1,16 +1,25 @@
-# noteapp
 
-A new Flutter project.
+📝 Notes App
+A simple and efficient Flutter ToDo app that allows users to create, edit, and delete notes with customizable note backgrounds. The app provides a smooth user experience using local storage and state management.
 
-## Getting Started
+✨ Features
+➕ Add new notes with title and content
 
-This project is a starting point for a Flutter application.
+📝 Edit existing notes
 
-A few resources to get you started if this is your first Flutter project:
+❌ Delete notes easily
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🎨 Change note background color for better organization
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+⚡ Fast and responsive with local storage
+
+🛠️ Tech Stack
+Flutter & Dart
+
+State Management: Cubit (Bloc)
+
+Local Storage: Hive
+
+Clean UI and responsive design
+
+Efficient performance with offline support
